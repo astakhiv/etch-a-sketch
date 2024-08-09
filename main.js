@@ -15,8 +15,15 @@ function createGrid(n) {
 
             col.classList.add("col");
             
-            col.addEventListener('mouseover', (e) => {
-                e.target.classList.add("hovered");
+            col.addEventListener('mouseenter', (e) => {
+
+                if (e.target.style["background-color"] === "") {
+                    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+                    e.target.style["background-color"] = `#${randomColor}`;
+                    e.target.style["opacity"] = 1;
+                } else {
+                    e.target.style["opacity"] = +e.target.style["opacity"] - 0.1;
+                }
             });
 
             row.appendChild(col);

@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     width: 800px;
     height: 800px;
+    background-color: #000;
 }
 
 .row {
