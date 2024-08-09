@@ -1,17 +1,43 @@
 const display = document.querySelector(".display");
+const newGrid = document.querySelector(".new-grid");
 
-for (let i = 0; i < 8; i++) {
-    const row = document.createElement("div");
+console.log(newGrid);
 
-    row.classList.add("row");
+function createGrid(n) {
+    display.innerHTML = "";
+    for (let i = 0; i < n; i++) {
+        const row = document.createElement("div");
 
-    for (let j = 0; j < 8; j++) {
-        const col = document.createElement("div");
+        row.classList.add("row");
 
-        col.classList.add("col");
+        for (let j = 0; j < n; j++) {
+            const col = document.createElement("div");
 
-        row.appendChild(col);
+            col.classList.add("col");
+            
+            col.addEventListener('mouseover', (e) => {
+                e.target.classList.add("hovered");
+            });
+
+            row.appendChild(col);
+        }
+
+        display.appendChild(row);
+    }
+}
+
+newGrid.addEventListener("click", () => {
+    console.log('here');
+    let n = 0;
+
+    console.log(n > 100);
+    console.log(n < 1);
+    console.log(isNaN(n));
+    while (n > 100 || n < 1 || isNaN(n)) {
+        n = +prompt("Enter number of rows");
     }
 
-    display.appendChild(row);
-}
+    createGrid(n);
+});
+
+createGrid(8);
